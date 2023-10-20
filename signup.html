@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-image: url(image1.jpg); /* Corrected image URL */
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Added transparency for better readability */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #fa872f;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff7300;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b34200;
+}
+</style>
+<body>
+    <div class="content">
+        <div class="title"></div>
+<div class="content">
+    <form action="http://localhost:3000/signup" method="post" onsubmit="return validateForm()">
+        <div class="container">
+        <h1>Sign Up</h1>
+        <form action="#" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password (at least 8 characters with 2 special characters)" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign Up">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+    
+            // Simple username validation (non-empty)
+            if (username === "") {
+                alert("Username cannot be empty");
+                return false;
+            }
+    
+            // Simple email validation (non-empty and basic format check)
+            if (email === "" || !email.includes("@")) {
+                alert("Invalid email address");
+                return false;
+            }
+    
+            // Password validation (at least 8 characters with 2 special characters)
+            var passwordPattern = /^(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            if (!password.match(passwordPattern)) {
+                alert("Password must be at least 8 characters with 2 special characters");
+                return false;
+            }
+    
+            // Confirm password validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+    
+            // Form is valid, allow submission
+            return true;
+        }
+    </script>
+    </body>
+</html>
